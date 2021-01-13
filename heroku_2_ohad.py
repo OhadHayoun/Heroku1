@@ -16,7 +16,6 @@ def test():
     """
        test
     """
-
     return render_template('index5.html')
 
 @app.route('/predict_single')

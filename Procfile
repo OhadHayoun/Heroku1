@@ -1,1 +1,1 @@
-web: python heroku_2_ohad.py
+web: python heroku_2_ohad.py:app
