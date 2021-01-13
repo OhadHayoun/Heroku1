@@ -4,7 +4,8 @@ import json
 import pickle
 import sklearn
 from flask import Flask, request, jsonify, render_template
-from os import environ
+import os
+
 
 PKL_FILE_NAME = 'iris_rfc_pkl'
 app = Flask(__name__)
@@ -43,7 +44,7 @@ def results():
 
 
 if __name__ == '__main__':
-    port = environ.get('PORT')
+    port = os.environ.get('PORT')
 
     if port:
         app.run(host='0.0.0.0', port=int(port))
