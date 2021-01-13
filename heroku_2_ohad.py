@@ -5,18 +5,23 @@ import pickle
 import sklearn
 from flask import Flask, request, jsonify, render_template
 import os
+import gunicorn
 
 
 PKL_FILE_NAME = 'iris_rfc_pkl'
 app = Flask(__name__)
 model = pickle.load(open(PKL_FILE_NAME, 'rb'))
 
-@app.route('/test')
+@app.route('/test_html')
 def test():
     """
-       test
+       html test
     """
-    return render_template('index5.html')
+    values = [np.array([request.args.get(x) for x in request.args])]
+    predict_request = model.predict(values)
+    prediction_string = str(predict_request[0])
+
+    return render_template('index5.html',prediction = prediction_string)
 
 @app.route('/predict_single')
 def predict2():
@@ -26,7 +31,8 @@ def predict2():
        """
     values = [np.array([request.args.get(x) for x in request.args])]
     predict_request = model.predict(values)
-    return str(predict_request[0])
+    prediction_string = str(predict_request[0])
+    return prediction_string
 
 
 @app.route('/predict_multiple', methods=["POST"])
