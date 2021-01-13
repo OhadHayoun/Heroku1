@@ -1,12 +1,9 @@
-# import numpy as np
-# import pandas as pd
+import numpy as np
+import pandas as pd
 import json
 import pickle
 from flask import Flask, request, jsonify, render_template
 import os
-import ctypes
-
-print (ctypes.sizeof(ctypes.c_voidp))
 
 PKL_FILE_NAME = 'iris_rfc_pkl'
 app = Flask(__name__)
