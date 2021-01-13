@@ -44,4 +44,12 @@ def results():
 
 if __name__ == '__main__':
     port = environ.get('PORT')
-    app.run(host='0.0.0.0', port=int(port), debug=True)
+
+    if port:
+        app.run(host='0.0.0.0', port=int(port))
+    else:
+        app.run()
+
+# if __name__ == '__main__':
+#     port = environ.get('PORT')
+#     app.run(host='0.0.0.0', port=int(port), debug=True)
